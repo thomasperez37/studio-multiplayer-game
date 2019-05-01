@@ -6,6 +6,20 @@ export default class Memory extends GameComponent {
     constructor(props) {
         super(props);
         this.state = {
+            players: [
+                {
+                    points: 0,
+                    isTurn: true,
+                    isWinner: false,
+                    id: "",
+                },
+                {
+                    points: 0,
+                    isTurn: false,
+                    isWinner: false,
+                    id: "",
+                }
+            ]
             cellState: [
                 {
                     color: "#16ff12",
@@ -97,8 +111,10 @@ export default class Memory extends GameComponent {
         this.setState({ last_user_id: data.user_id });
     }
 
-    handleButtonClick() {
+    handleButtonClick(cellNum) {
         this.getSessionDatabaseRef().set({ user_id: this.getMyUserId() });
+        //this.setState();
+        //set state of specified
     }
 
     render() {
@@ -128,13 +144,16 @@ export default class Memory extends GameComponent {
 
                     <p>Session users:</p>
                     <ul> {users} </ul>
-
+                    {//get rid of below button
+                    }
                     <button onClick={() => this.handleButtonClick()}>Button</button>
                     <p>{last_user_message}</p>
 
 
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[0].isClicked ? this.state.cellState[0].color : "white"}}>
+                        {// this.state.cellState[0].isClicked ? this.state.cellState[0].color : "white"
+                        }
                         </div>
                         <div class="col-md-3">
                         </div>
