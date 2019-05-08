@@ -6,6 +6,7 @@ export default class Memory extends GameComponent {
     constructor(props) {
         super(props);
         this.state = {
+            chosenCells: [],
             players: [
                 {
                     points: 0,
@@ -23,81 +24,97 @@ export default class Memory extends GameComponent {
             cellState: [
                 {
                     color: "#16ff12",
+                    index: 0,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#fbff0a",
+                    index: 1,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#487fff",
+                    index: 2,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#fbff0a",
+                    index: 3,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#487fff",
+                    index: 4,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#ff3842",
+                    index: 5,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#ff7d13",
+                    index: 6,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#ff7dd8",
+                    index: 7,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#ae22ff",
+                    index: 8,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#16ff12",
+                    index: 9,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#ff7dd8",
+                    index: 10,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#b6ffe8",
+                    index: 11,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#ff7d13",
+                    index: 12,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#b6ffe8",
+                    index: 13,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#ae22ff",
+                    index: 14,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#ff3842",
+                    index: 15,
                     isClicked: false,
                     isMatched: false,
                 },
@@ -112,7 +129,27 @@ export default class Memory extends GameComponent {
     }
 
     handleButtonClick(cellNum) {
-        this.getSessionDatabaseRef().set({ user_id: this.getMyUserId() });
+        var currCellState = this.state.cellState;
+        var chosenCell = this.state.chosenCells;
+        //this.getSessionDatabaseRef().set({ user_id: this.getMyUserId() });
+        chosenCell.push(currCellState[cellNum]);
+        var firstIndex = chosenCell[0].index;
+        if(chosenCell.length == 1)
+        {
+            currCellState[cellNum].isClicked = true;
+        }
+        if(chosenCell.length == 2)
+        {
+            if(chosenCell[0].color == chosenCell[1].color && !chosenCell[0].isMatched && !chosenCell[1].isMatched)
+            {
+                currCellState[firstIndex].isMatched = true;
+                currCellState[cellNum].isMatched = true;
+            }
+        }
+        this.getSessionDatabaseRef().update({
+            chosenCells: chosenCell,
+            cellState: currCellState,
+        });
         //this.setState();
         //set state of specified
     }
@@ -155,41 +192,40 @@ export default class Memory extends GameComponent {
                         {// this.state.cellState[0].isClicked ? this.state.cellState[0].color : "white"
                         }
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[1].isClicked ? this.state.cellState[1].color : "white"}}>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[2].isClicked ? this.state.cellState[2].color : "white"}}>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[3].isClicked ? this.state.cellState[3].color : "white"}}>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[4].isClicked ? this.state.cellState[4].color : "white"}}>
+                        </div>
+                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[5].isClicked ? this.state.cellState[5].color : "white"}}>
+                        </div>
+                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[6].isClicked ? this.state.cellState[6].color : "white"}}>
+                        </div>
+                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[7].isClicked ? this.state.cellState[7].color : "white"}}>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[8].isClicked ? this.state.cellState[8].color : "white"}}>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[9].isClicked ? this.state.cellState[9].color : "white"}}>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[10].isClicked ? this.state.cellState[10].color : "white"}}>
                         </div>
-                        <div class="col-md-3">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                        </div>
-                        <div class="col-md-3">
-                        </div>
-                        <div class="col-md-3">
-                        </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[11].isClicked ? this.state.cellState[11].color : "white"}}>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[12].isClicked ? this.state.cellState[12].color : "white"}}>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[13].isClicked ? this.state.cellState[13].color : "white"}}>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[14].isClicked ? this.state.cellState[14].color : "white"}}>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[15].isClicked ? this.state.cellState[15].color : "white"}}>
                         </div>
                     </div>
                 </div>
