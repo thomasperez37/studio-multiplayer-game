@@ -20,7 +20,7 @@ export default class Memory extends GameComponent {
                     isWinner: false,
                     id: "",
                 }
-            ]
+            ],
             cellState: [
                 {
                     color: "#16ff12",
@@ -131,7 +131,6 @@ export default class Memory extends GameComponent {
     handleButtonClick(cellNum) {
         var currCellState = this.state.cellState;
         var chosenCell = this.state.chosenCells;
-        //this.getSessionDatabaseRef().set({ user_id: this.getMyUserId() });
         chosenCell.push(currCellState[cellNum]);
         var firstIndex = chosenCell[0].index;
         if(chosenCell.length == 1)
@@ -173,59 +172,61 @@ export default class Memory extends GameComponent {
 
             return (
                 <div>
-                    <p>You are the {userStatus}</p>
+                    <div>
+                        <p>You are the {userStatus}</p>
 
-                    <p>Session ID: {id}</p>
+                        <p>Session ID: {id}</p>
 
-                    <p>Session creator: {creator}</p>
+                        <p>Session creator: {creator}</p>
 
-                    <p>Session users:</p>
-                    <ul> {users} </ul>
-                    {//get rid of below button
-                    }
-                    <button onClick={() => this.handleButtonClick()}>Button</button>
-                    <p>{last_user_message}</p>
-
-
-                    <div class="row">
-                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[0].isClicked ? this.state.cellState[0].color : "white"}}>
-                        {// this.state.cellState[0].isClicked ? this.state.cellState[0].color : "white"
+                        <p>Session users:</p>
+                        <ul> {users} </ul>
+                        {//get rid of below button
                         }
-                        </div>
-                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[1].isClicked ? this.state.cellState[1].color : "white"}}>
-                        </div>
-                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[2].isClicked ? this.state.cellState[2].color : "white"}}>
-                        </div>
-                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[3].isClicked ? this.state.cellState[3].color : "white"}}>
+                        <button onClick={() => this.handleButtonClick()}>Button</button>
+                        <p>{last_user_message}</p>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[4].isClicked ? this.state.cellState[4].color : "white"}}>
+
+                        <div class="row">
+                            <div class="col-md-3" style={{backgroundColor: this.state.cellState[0].isClicked ? this.state.cellState[0].color : "white"}}>
+                            {// this.state.cellState[0].isClicked ? this.state.cellState[0].color : "white"
+                            }
+                            </div>
+                            <div class="col-md-3" style={{backgroundColor: this.state.cellState[1].isClicked ? this.state.cellState[1].color : "white"}}>
+                            </div>
+                            <div class="col-md-3" style={{backgroundColor: this.state.cellState[2].isClicked ? this.state.cellState[2].color : "white"}}>
+                            </div>
+                            <div class="col-md-3" style={{backgroundColor: this.state.cellState[3].isClicked ? this.state.cellState[3].color : "white"}}>
                         </div>
-                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[5].isClicked ? this.state.cellState[5].color : "white"}}>
+                        <div class="row">
+                            <div class="col-md-3" style={{backgroundColor: this.state.cellState[4].isClicked ? this.state.cellState[4].color : "white"}}>
+                            </div>
+                            <div class="col-md-3" style={{backgroundColor: this.state.cellState[5].isClicked ? this.state.cellState[5].color : "white"}}>
+                            </div>
+                            <div class="col-md-3" style={{backgroundColor: this.state.cellState[6].isClicked ? this.state.cellState[6].color : "white"}}>
+                            </div>
+                            <div class="col-md-3" style={{backgroundColor: this.state.cellState[7].isClicked ? this.state.cellState[7].color : "white"}}>
+                            </div>
                         </div>
-                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[6].isClicked ? this.state.cellState[6].color : "white"}}>
+                        <div class="row">
+                            <div class="col-md-3" style={{backgroundColor: this.state.cellState[8].isClicked ? this.state.cellState[8].color : "white"}}>
+                            </div>
+                            <div class="col-md-3" style={{backgroundColor: this.state.cellState[9].isClicked ? this.state.cellState[9].color : "white"}}>
+                            </div>
+                            <div class="col-md-3" style={{backgroundColor: this.state.cellState[10].isClicked ? this.state.cellState[10].color : "white"}}>
+                            </div>
+                            <div class="col-md-3" style={{backgroundColor: this.state.cellState[11].isClicked ? this.state.cellState[11].color : "white"}}>
+                            </div>
                         </div>
-                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[7].isClicked ? this.state.cellState[7].color : "white"}}>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[8].isClicked ? this.state.cellState[8].color : "white"}}>
-                        </div>
-                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[9].isClicked ? this.state.cellState[9].color : "white"}}>
-                        </div>
-                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[10].isClicked ? this.state.cellState[10].color : "white"}}>
-                        </div>
-                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[11].isClicked ? this.state.cellState[11].color : "white"}}>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[12].isClicked ? this.state.cellState[12].color : "white"}}>
-                        </div>
-                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[13].isClicked ? this.state.cellState[13].color : "white"}}>
-                        </div>
-                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[14].isClicked ? this.state.cellState[14].color : "white"}}>
-                        </div>
-                        <div class="col-md-3" style={{backgroundColor: this.state.cellState[15].isClicked ? this.state.cellState[15].color : "white"}}>
+                        <div class="row">
+                            <div class="col-md-3" style={{backgroundColor: this.state.cellState[12].isClicked ? this.state.cellState[12].color : "white"}}>
+                            </div>
+                            <div class="col-md-3" style={{backgroundColor: this.state.cellState[13].isClicked ? this.state.cellState[13].color : "white"}}>
+                            </div>
+                            <div class="col-md-3" style={{backgroundColor: this.state.cellState[14].isClicked ? this.state.cellState[14].color : "white"}}>
+                            </div>
+                            <div class="col-md-3" style={{backgroundColor: this.state.cellState[15].isClicked ? this.state.cellState[15].color : "white"}}>
+                            </div>
                         </div>
                     </div>
                 </div>
