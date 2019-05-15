@@ -1,6 +1,7 @@
 import GameComponent from "../../GameComponent.js";
 import React from "react";
 import UserApi from "../../UserApi.js";
+import Tile from "Tile.js";
 
 export default class Memory extends GameComponent {
     constructor(props) {
@@ -24,97 +25,81 @@ export default class Memory extends GameComponent {
             cellState: [
                 {
                     color: "#16ff12",
-                    index: 0,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#fbff0a",
-                    index: 1,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#487fff",
-                    index: 2,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#fbff0a",
-                    index: 3,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#487fff",
-                    index: 4,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#ff3842",
-                    index: 5,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#ff7d13",
-                    index: 6,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#ff7dd8",
-                    index: 7,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#ae22ff",
-                    index: 8,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#16ff12",
-                    index: 9,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#ff7dd8",
-                    index: 10,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#b6ffe8",
-                    index: 11,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#ff7d13",
-                    index: 12,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#b6ffe8",
-                    index: 13,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#ae22ff",
-                    index: 14,
                     isClicked: false,
                     isMatched: false,
                 },
                 {
                     color: "#ff3842",
-                    index: 15,
                     isClicked: false,
                     isMatched: false,
                 },
@@ -123,7 +108,13 @@ export default class Memory extends GameComponent {
         // this.getSessionDatabaseRef().set({text:"Hello Fil!"});
     }
 
+    onComponentDidMount() {
+        //put cellstate in here
+        //then randomize
+    }
+
     onSessionDataChanged(data) {
+        // use setstate here
         console.log("Data changed?", data);
         this.setState({ last_user_id: data.user_id });
     }
