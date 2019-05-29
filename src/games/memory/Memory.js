@@ -105,7 +105,6 @@ export default class Memory extends GameComponent {
                 },
             ],
         };
-        // this.getSessionDatabaseRef().set({text:"Hello Fil!"});
     }
 
     onComponentDidMount() {
@@ -125,14 +124,10 @@ export default class Memory extends GameComponent {
         var chosenCell = currCellState[cellNum];
         chosenCell.isClicked = true;
         var clickedCells = currCellState.filter((cell) => cell.isClicked && !cell.isMatched);
-        if(clickedCells.length == 1 && clickedCells[0].color == chosenCell.color)
-        {
-
-        }
+        if(clickedCells.length == 1 && clickedCells[0].color == chosenCell.color){}
         this.getSessionDatabaseRef().update({
             cellState: currCellState,
         });
-
 
         /*
         chosenCell.push();
@@ -155,9 +150,6 @@ export default class Memory extends GameComponent {
 
     render() {
         var id = this.getSessionId();
-        //var users = this.getSessionUserIds().map(user_id => (
-            //<li key={user_id}>{UserApi.getName(user_id)}</li>
-        //));
         var creator = UserApi.getName(this.getSessionCreatorUserId());
         var isCreator = this.getMyUserId() === this.getSessionCreatorUserId();
         var userStatus = isCreator ? "host" : "guest";
@@ -173,17 +165,8 @@ export default class Memory extends GameComponent {
                 <div>
                     <div>
                         <p>You are the {userStatus}</p>
-
                         <p>Session ID: {id}</p>
-
                         <p>Session creator: {creator}</p>
-
-                        <p>Session users:</p>
-
-                        {//<ul> {users} </ul>
-                        }
-                        <button onClick={() => this.handleButtonClick()}>Button</button>
-                        <p>{last_user_message}</p>
                     </div>
                     <div style={{"display" : "flex", "flexFlow" : "row wrap", "width" : "130px"}}>
                     {this.state.cellState.map((cell, i) => <Tile
