@@ -124,11 +124,21 @@ export default class Memory extends GameComponent {
         console.log("clicked" + cellNum);
         var currCellState = [...this.state.cellState];
         var chosenCell = currCellState[cellNum];
-        chosenCell.isClicked = true;
+        chosenCell.isClicked = !chosenCell.isClicked;
         var clickedCells = currCellState.filter((cell) => cell.isClicked && !cell.isMatched);
-        if(clickedCells.length == 1 && clickedCells[0].color == chosenCell.color)
+        var matches = clickedCells.filter((cell) => cell.color == chosenCell.color);
+        var ClickedCellsDontMatch = clickedCells.length > 1 && matches.length < clickedCells.length;
+        if(ClickedCellsDontMatch)
         {
-
+            console.log("clown");
+            clickedCells.forEach((cell) => cell.isClicked = false);
+        }
+        else
+        {
+            clickedCells.forEach((cell) => {
+                cell.isClicked = false;
+                cell.isMatched = true;
+            });
         }
         this.getSessionDatabaseRef().update({
             cellState: currCellState,
