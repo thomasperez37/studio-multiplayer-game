@@ -1,6 +1,8 @@
 import GameComponent from "../../GameComponent.js";
 import React from "react";
 import UserApi from "../../UserApi.js";
+import 'bootstrap/dist/css/bootstrap.css';
+
 import Tile from "./Tile.js";
 
 export default class Memory extends GameComponent {
@@ -191,7 +193,6 @@ export default class Memory extends GameComponent {
                     matched={cell.isMatched}
                     index={i}
                      />)}
-
                 </div>
             );
 
