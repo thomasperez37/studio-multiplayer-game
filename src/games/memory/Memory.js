@@ -2,7 +2,6 @@ import GameComponent from "../../GameComponent.js";
 import React from "react";
 import UserApi from "../../UserApi.js";
 import 'bootstrap/dist/css/bootstrap.css';
-
 import Tile from "./Tile.js";
 
 export default class Memory extends GameComponent {
@@ -186,6 +185,7 @@ export default class Memory extends GameComponent {
                         <button onClick={() => this.handleButtonClick()}>Button</button>
                         <p>{last_user_message}</p>
                     </div>
+                    <div style={{"display" : "flex", "flexFlow" : "row wrap", "width" : "130px"}}>
                     {this.state.cellState.map((cell, i) => <Tile
                     handler={this.handleButtonClick}
                     color={cell.color}
@@ -193,6 +193,7 @@ export default class Memory extends GameComponent {
                     matched={cell.isMatched}
                     index={i}
                      />)}
+                     </div>
                 </div>
             );
 
