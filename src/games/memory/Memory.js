@@ -2,7 +2,6 @@ import GameComponent from "../../GameComponent.js";
 import React from "react";
 import UserApi from "../../UserApi.js";
 import 'bootstrap/dist/css/bootstrap.css';
-
 import Tile from "./Tile.js";
 
 export default class Memory extends GameComponent {
@@ -106,7 +105,6 @@ export default class Memory extends GameComponent {
                 },
             ],
         };
-        // this.getSessionDatabaseRef().set({text:"Hello Fil!"});
     }
 
     onComponentDidMount() {
@@ -144,7 +142,6 @@ export default class Memory extends GameComponent {
             cellState: currCellState,
         });
 
-
         /*
         chosenCell.push();
         var firstIndex = chosenCell[0].index;
@@ -166,9 +163,6 @@ export default class Memory extends GameComponent {
 
     render() {
         var id = this.getSessionId();
-        //var users = this.getSessionUserIds().map(user_id => (
-            //<li key={user_id}>{UserApi.getName(user_id)}</li>
-        //));
         var creator = UserApi.getName(this.getSessionCreatorUserId());
         var isCreator = this.getMyUserId() === this.getSessionCreatorUserId();
         var userStatus = isCreator ? "host" : "guest";
@@ -184,18 +178,10 @@ export default class Memory extends GameComponent {
                 <div>
                     <div>
                         <p>You are the {userStatus}</p>
-
                         <p>Session ID: {id}</p>
-
                         <p>Session creator: {creator}</p>
-
-                        <p>Session users:</p>
-
-                        {//<ul> {users} </ul>
-                        }
-                        <button onClick={() => this.handleButtonClick()}>Button</button>
-                        <p>{last_user_message}</p>
                     </div>
+                    <div style={{"display" : "flex", "flexFlow" : "row wrap", "width" : "130px"}}>
                     {this.state.cellState.map((cell, i) => <Tile
                     handler={this.handleButtonClick}
                     color={cell.color}
@@ -203,6 +189,7 @@ export default class Memory extends GameComponent {
                     matched={cell.isMatched}
                     index={i}
                      />)}
+                     </div>
                 </div>
             );
 

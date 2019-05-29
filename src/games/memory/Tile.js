@@ -15,8 +15,7 @@ export default class Tile extends React.Component {
             color = "#fff";
         }
         return(
-            <div style={{backgroundColor: color, "width": "30px", "height": "30px", border:"2px solid black"}} onClick={() => this.props.handler(index)}>
-
+            <div style={{"backgroundColor" : color, "width" : "30px", "height" : "30px", "border" : "2px solid black", "display" : "inline-block"}} onClick={() => this.props.handler(index)}>
             </div>
         );
     }
