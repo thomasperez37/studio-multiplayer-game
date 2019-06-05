@@ -3,6 +3,7 @@ import React from "react";
 import UserApi from "../../UserApi.js";
 import 'bootstrap/dist/css/bootstrap.css';
 import Tile from "./Tile.js";
+import ResetButton from "./ResetButton.js";
 
 export default class Memory extends GameComponent {
     constructor(props) {
@@ -22,100 +23,210 @@ export default class Memory extends GameComponent {
                     id: "",
                 }
             ],
-            cellState: [
-                {
-                    color: "#16ff12",
-                    isClicked: false,
-                    isMatched: false,
-                },
-                {
-                    color: "#fbff0a",
-                    isClicked: false,
-                    isMatched: false,
-                },
-                {
-                    color: "#487fff",
-                    isClicked: false,
-                    isMatched: false,
-                },
-                {
-                    color: "#fbff0a",
-                    isClicked: false,
-                    isMatched: false,
-                },
-                {
-                    color: "#487fff",
-                    isClicked: false,
-                    isMatched: false,
-                },
-                {
-                    color: "#ff3842",
-                    isClicked: false,
-                    isMatched: false,
-                },
-                {
-                    color: "#ff7d13",
-                    isClicked: false,
-                    isMatched: false,
-                },
-                {
-                    color: "#ff7dd8",
-                    isClicked: false,
-                    isMatched: false,
-                },
-                {
-                    color: "#ae22ff",
-                    isClicked: false,
-                    isMatched: false,
-                },
-                {
-                    color: "#16ff12",
-                    isClicked: false,
-                    isMatched: false,
-                },
-                {
-                    color: "#ff7dd8",
-                    isClicked: false,
-                    isMatched: false,
-                },
-                {
-                    color: "#b6ffe8",
-                    isClicked: false,
-                    isMatched: false,
-                },
-                {
-                    color: "#ff7d13",
-                    isClicked: false,
-                    isMatched: false,
-                },
-                {
-                    color: "#b6ffe8",
-                    isClicked: false,
-                    isMatched: false,
-                },
-                {
-                    color: "#ae22ff",
-                    isClicked: false,
-                    isMatched: false,
-                },
-                {
-                    color: "#ff3842",
-                    isClicked: false,
-                    isMatched: false,
-                },
-            ],
+            cellState: [],
         };
     }
 
-    onComponentDidMount() {
+    componentDidMount() {
         //put cellstate in here
         //then randomize
+        var arr = [
+            {
+                color: "#16ff12",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#fbff0a",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#487fff",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#fbff0a",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#487fff",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#ff3842",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#ff7d13",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#ff7dd8",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#ae22ff",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#16ff12",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#ff7dd8",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#b6ffe8",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#ff7d13",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#b6ffe8",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#ae22ff",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#ff3842",
+                isClicked: false,
+                isMatched: false,
+            },
+        ];
+        var k = 0;
+        for(var i = arr.length - 1; i > 0; i--)
+        {
+            k = Math.floor(Math.random() * (i + 1));
+            var value = arr[i];
+            arr[i] = arr[k];
+            arr[k] = value;
+
+        }
+        this.getSessionDatabaseRef().update({
+            cellState: arr,
+        });
     }
 
     onSessionDataChanged(data) {
         // use setstate here
         console.log("Data changed?", data);
         this.setState({ cellState: data.cellState });
+    }
+
+    handleReset = () => {
+        var arr = [
+            {
+                color: "#16ff12",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#fbff0a",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#487fff",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#fbff0a",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#487fff",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#ff3842",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#ff7d13",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#ff7dd8",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#ae22ff",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#16ff12",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#ff7dd8",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#b6ffe8",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#ff7d13",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#b6ffe8",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#ae22ff",
+                isClicked: false,
+                isMatched: false,
+            },
+            {
+                color: "#ff3842",
+                isClicked: false,
+                isMatched: false,
+            },
+        ];
+        var k = 0;
+        for(var i = arr.length - 1; i > 0; i--)
+        {
+            k = Math.floor(Math.random() * (i + 1));
+            var value = arr[i];
+            arr[i] = arr[k];
+            arr[k] = value;
+
+        }
+        this.getSessionDatabaseRef().update({
+            cellState: arr,
+        });
     }
 
     handleButtonClick = (cellNum) => {
@@ -130,6 +241,10 @@ export default class Memory extends GameComponent {
         {
             console.log("clown");
             clickedCells.forEach((cell) => cell.isClicked = false);
+        }
+        else if(clickedCells.length == 1)
+        {
+            clickedCells.forEach((cell) => cell.isClicked = true);
         }
         else
         {
@@ -190,6 +305,7 @@ export default class Memory extends GameComponent {
                     index={i}
                      />)}
                      </div>
+                    <ResetButton handle={this.handleReset} />
                 </div>
             );
 
